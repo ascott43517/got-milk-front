@@ -2,8 +2,8 @@ import { useState } from "react";
 
 
 const kdefaultFormState = {
-  address:"",
-  username:"",
+  email:"",
+  password:"",
 };
 
 const NewUserForm = ({ handleUserSubmit, }) => {

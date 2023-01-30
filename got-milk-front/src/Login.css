@@ -1,0 +1,54 @@
+.auth-form-container{
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(79deg,#fafbf9,#e9eb71 48%, #87e655); 
+    flex-direction: column;
+    color:white;
+    
+
+    
+  } 
+
+  .login-form, .create-user-form {
+    display:flex;
+    flex-direction: column;
+    border: 1px solid rgb(30, 170, 32);
+    border-radius: 10px;
+    padding: 5rem;
+    margin: 0.5rem
+    
+
+
+  }
+  label {
+    text-align: left;
+    padding: 0.25rem;
+  }
+  input {
+    margin: 0.5 rem 0;
+    padding: 1em;
+    border:none;
+    border-radius: 10px;
+
+  }
+
+  .create-user-btn {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: rgb(22, 204, 37)
+    
+
+  }
+
+  .link-btn {
+    background: none;
+    color: white;
+    text-decoration: underline;
+
+  }

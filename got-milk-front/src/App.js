@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import UserList from './UserList';
 import NewUserForm from './NewUserForm';
-import CreateUserScreen from './CreateUserScreen';
-
+import Login from './Login';
+import './Login.css';
+import PageContent from './PageContent';
+import Profile from './Profile';
 
 
 
@@ -36,6 +38,19 @@ const addNewUserApi = (userData,) => {
     });
 };
 
+const getUserAPI = (username) => {
+  const currentData = {...username}
+  return axios
+  .get(`${kBaseUrl}/users/${username}`)
+  .then((response) => {
+    return(response.data);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+
+}
+
 const directionsAPI = (data) => {
   const currentData = {...data};
   return axios 
@@ -49,11 +64,17 @@ const directionsAPI = (data) => {
 
 }
 function App() {
+  const [currentForm, setCurrentForm] = useState('Login')
   const [userData, setUserData] = useState([])
   const [address, setaddress] = useState([])
+  const [currentPageName, setCurrentPageName] = useState('Login')
+  const [currentUser, setCurrentUser] = useState([])
   
 
 
+  const toggleForm = (formName) => {
+    setCurrentForm(formName);
+  }
   const getAllUsers = () => {
     getAllUsersApi().then((users) => {
       setUserData(users)
@@ -63,7 +84,7 @@ function App() {
   useEffect(() => {
     // data fetching code
     getAllUsers();
-  }, [userData]);
+  }, []);
 
 
   const handleUserSubmit = (newUserAddress,newUserUsername) => {
@@ -72,11 +93,25 @@ function App() {
      .then((newUser) => {
       console.log(newUser);
 
-      setUserData([...userData,newUser])
+      setCurrentPageName("Login")
      })
      .catch((e) => console.log(e));
      };
-  
+  const handleLoginSubmit = (newUserEmail) => {
+
+      getUserAPI(newUserEmail)
+      .then((user) => {
+       console.log(user)
+       setCurrentUser(user);
+ 
+      
+      }
+     )
+      .catch((e) => 
+      console.log(e));
+      setCurrentPageName("Profile")
+     
+      };
     
   const getDirections = (address) => {
 
@@ -111,18 +146,28 @@ function App() {
       <header className="App-header">
       <section className="U">
       
-      
+      {/* {currentForm === "login" ? <Login onFormSwitch = {toggleForm} /> : <CreateUserScreen handleUserSubmit={handleUserSubmit} onFormSwitch={toggleForm}/>} */}
       </section>
-      <section className='Users'>
-        <CreateUserScreen handleUserSubmit={handleUserSubmit}/>
-       Current Users Created: 
-       <UserList
+       <section className='Users'>
+     <PageContent
+     setCurrentPageName = {setCurrentPageName}
+     currentPageName = {currentPageName}
+     handleUserSubmit={handleUserSubmit}
+     handleLoginSubmit={handleLoginSubmit}
+     currentUser={currentUser}
+     setCurrentUser={setCurrentUser}
+
+     />
+     
+       {/* Current Users Created:  */}
+       {/* <UserList
        userData={userData}
-       handleUserSubmit = {handleUserSubmit}/>
+       handleUserSubmit = {handleUserSubmit}/> */}
+       </section>
+       {/* <button className='directions' onClick={() => getDirections(address)}>Get Directions </button> 
       
-      <button className='directions' onClick={() => getDirections(address)}>Get Directions </button> 
-      </section>
-      {address}
+       
+      {address}  */}
       </header>
     </div>
   );
