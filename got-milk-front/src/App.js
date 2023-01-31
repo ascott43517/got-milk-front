@@ -38,14 +38,47 @@ const addNewUserApi = (userData,) => {
     });
 };
 
+const editUserApi = (username) => {
+  
+  const currentData = {...username};
+
+
+  return axios
+    .patch(`${kBaseUrl}/users/${username}`, currentData)
+    .then((response) => {
+      console.log(response.data)
+      return response.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
 const getUserAPI = (username) => {
   const currentData = {...username}
+  console.log(currentData)
   return axios
   .get(`${kBaseUrl}/users/${username}`)
+  .then((response) => {
+    return (response.data);
+  })
+  .catch((err) => {
+    
+    console.log(err);
+  })
+
+}
+
+const getUserPostsAPI = (user_id) => {
+  const currentData = {...user_id}
+  return axios
+  .get(`${kBaseUrl}/users/${user_id}/posts`)
   .then((response) => {
     return(response.data);
   })
   .catch((err) => {
+    
     console.log(err);
   })
 
@@ -69,7 +102,7 @@ function App() {
   const [address, setaddress] = useState([])
   const [currentPageName, setCurrentPageName] = useState('Login')
   const [currentUser, setCurrentUser] = useState([])
-  
+  const [profileData, setProfileData] = useState([])
 
 
   const toggleForm = (formName) => {
@@ -97,22 +130,53 @@ function App() {
      })
      .catch((e) => console.log(e));
      };
-  const handleLoginSubmit = (newUserEmail) => {
 
+  const handleEditProfileSubmit = (newUserAddress,newUserUsername) => {
+      
+      editUserApi(newUserAddress, newUserUsername)
+      .then((newUser) => {
+        console.log('hi')
+        console.log(newUser);
+
+        setCurrentPageName("Profile")
+        setCurrentUser(newUser)
+        
+      
+       
+      // setCurrentUser(newUser.user_id)
+      //  editUserClick()
+      })
+      .catch((e) => console.log(e));
+      };
+
+
+  const handleLoginSubmit = (newUserEmail) => {
+      
       getUserAPI(newUserEmail)
       .then((user) => {
-       console.log(user)
-       setCurrentUser(user);
- 
-      
+      if (user.username === newUserEmail){
+          console.log(user)
+          setCurrentUser(user);
+          setCurrentPageName("Profile");
+          ;
+          
+          
       }
-     )
-      .catch((e) => 
-      console.log(e));
-      setCurrentPageName("Profile")
+      
+          
+        
+      
+     }) 
+     setCurrentPageName("New-User")
      
-      };
+      // .catch((e) =>   console.log(e))
+    };
     
+
+   
+
+
+
   const getDirections = (address) => {
 
    directionsAPI(address)
@@ -141,6 +205,25 @@ function App() {
    .catch((e) => console.log(e));
   };
 
+
+  const postClick = () => {
+    setCurrentPageName("Post")
+  }
+
+  const editUserClick = () => {
+    setCurrentPageName("Edit-User")
+  }
+
+  const getPosts = (user_id) => {
+    getUserPostsAPI(user_id)
+    .then((posts) => {
+      setProfileData(posts.posts);
+
+     })
+     .catch((e) => console.log(e));
+     };
+
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -156,6 +239,13 @@ function App() {
      handleLoginSubmit={handleLoginSubmit}
      currentUser={currentUser}
      setCurrentUser={setCurrentUser}
+     postClick={postClick}
+     editUserClick={editUserClick}
+    //  getPosts={getPosts}
+    //  profileData= {profileData}
+    //  setProfileData={setProfileData}
+    //  getUserPostsAPI = {getUserPostsAPI}
+     handleEditProfileSubmit={handleEditProfileSubmit}
 
      />
      
