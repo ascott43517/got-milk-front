@@ -160,10 +160,15 @@ function App() {
         console.log(newPostFormulaName)
         
  
-      //  setCurrentPageName("Dashboard")
+      setCurrentPageName("Profile")
+      getUserPostsAPI(newUser.user_id).then((user) =>{
+        console.log(user)
+        setProfileData(user.posts)
       })
-      .catch((e) => console.log(e));
-      };
+      
+      // .catch((e) => console.log(e));
+      });
+    };
 
   const handleEditProfileSubmit = (newUserAddress, newUserUsername) => {
       
@@ -192,6 +197,7 @@ function App() {
         //  console.log(getUserPostsAPI(user.user_id));
       }
       getUserPostsAPI(user.user_id).then((user) =>{
+        console.log(user)
         setProfileData(user.posts)
       })
      }) 

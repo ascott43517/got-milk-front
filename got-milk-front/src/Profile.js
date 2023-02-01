@@ -34,13 +34,13 @@ return(
 >
    {props.profileData.map((post)=> (
     
-  <div className="post-data">post#: {post.post_id} <p></p>
+  <div className="post-data">posted by#: {post.username} <p></p>
   formula :{post.formula_name} 
-  <p></p>Adddress: {post.address}
+  <p></p>Address: {post.address}
   <p></p>Date: {post.date}
   <p></p>Picked Up? : {post.available ? "No":"Yes"}
   <p></p>
-  <button>map</button>
+  <button>Map It</button>
   <p></p></div>
 
   ))}
