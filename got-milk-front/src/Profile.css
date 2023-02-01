@@ -1,6 +1,6 @@
 
 
-.btn, .btnn {
+.btn, .btnn, .bton {
     border: none;
     background-color: white;
     padding: 20px;
@@ -22,4 +22,20 @@
     color:white;
         
       
+}
+.post-data {
+    padding:1rem;
+    border-radius: 20%;
+    border-width: 0.5rem;
+    border-style:ridge;
+    border-color: aquamarine;
+    justify-content: center;
+    display:inline-block;
+
+}
+
+.profile-background {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: #46ac0f;
+
 }

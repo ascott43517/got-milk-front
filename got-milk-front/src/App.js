@@ -9,6 +9,7 @@ import Login from './Login';
 import './Login.css';
 import PageContent from './PageContent';
 import Profile from './Profile';
+import PostData from './PostData';
 
 
 
@@ -57,7 +58,7 @@ const editUserApi = (username) => {
 
 const getUserAPI = (username) => {
   const currentData = {...username}
-  console.log(currentData)
+ 
   return axios
   .get(`${kBaseUrl}/users/${username}`)
   .then((response) => {
@@ -83,6 +84,27 @@ const getUserPostsAPI = (user_id) => {
   })
 
 }
+
+
+const createPostAPI = (data,) => {
+  const currentData = {...data}
+ 
+  return axios
+  .post(`${kBaseUrl}posts`, data)
+  .then((response) => {
+    return(response.data);
+  })
+  .catch((err) => {
+    
+    console.log(err);
+  })
+
+}
+
+
+
+
+
 
 const directionsAPI = (data) => {
   const currentData = {...data};
@@ -117,12 +139,12 @@ function App() {
   useEffect(() => {
     // data fetching code
     getAllUsers();
-  }, []);
+  }, [currentUser]);
 
 
   const handleUserSubmit = (newUserAddress,newUserUsername) => {
 
-     addNewUserApi(newUserAddress, newUserUsername)
+     addNewUserApi(newUserAddress, newUserUsername )
      .then((newUser) => {
       console.log(newUser);
 
@@ -131,20 +153,28 @@ function App() {
      .catch((e) => console.log(e));
      };
 
-  const handleEditProfileSubmit = (newUserAddress,newUserUsername) => {
+  const handlePostSubmit = (newPostFormulaName, ) => {
+      
+      createPostAPI(newPostFormulaName)
+      .then((newUser) => {
+        console.log(newPostFormulaName)
+        
+ 
+      //  setCurrentPageName("Dashboard")
+      })
+      .catch((e) => console.log(e));
+      };
+
+  const handleEditProfileSubmit = (newUserAddress, newUserUsername) => {
       
       editUserApi(newUserAddress, newUserUsername)
       .then((newUser) => {
-        console.log('hi')
-        console.log(newUser);
+       
 
         setCurrentPageName("Profile")
         setCurrentUser(newUser)
-        
       
-       
-      // setCurrentUser(newUser.user_id)
-      //  editUserClick()
+        
       })
       .catch((e) => console.log(e));
       };
@@ -155,27 +185,22 @@ function App() {
       getUserAPI(newUserEmail)
       .then((user) => {
       if (user.username === newUserEmail){
-          console.log(user)
+       
           setCurrentUser(user);
           setCurrentPageName("Profile");
-          ;
-          
-          
+          // getUserPostsAPI(user.user_id)
+        //  console.log(getUserPostsAPI(user.user_id));
       }
-      
-          
-        
-      
+      getUserPostsAPI(user.user_id).then((user) =>{
+        setProfileData(user.posts)
+      })
      }) 
      setCurrentPageName("New-User")
+    //  alert("No user")
      
       // .catch((e) =>   console.log(e))
     };
-    
-
-   
-
-
+  
 
   const getDirections = (address) => {
 
@@ -217,13 +242,16 @@ function App() {
   const getPosts = (user_id) => {
     getUserPostsAPI(user_id)
     .then((posts) => {
+      console.log(posts)
       setProfileData(posts.posts);
 
      })
      .catch((e) => console.log(e));
      };
 
-  
+     const logout = () => {
+      setCurrentPageName("Login")
+    }
   return (
     <div className="App">
       <header className="App-header">
@@ -240,15 +268,17 @@ function App() {
      currentUser={currentUser}
      setCurrentUser={setCurrentUser}
      postClick={postClick}
+     logout={logout}
      editUserClick={editUserClick}
-    //  getPosts={getPosts}
-    //  profileData= {profileData}
-    //  setProfileData={setProfileData}
-    //  getUserPostsAPI = {getUserPostsAPI}
+    getPosts={getPosts}
+     profileData= {profileData}
+     setProfileData={setProfileData}
+    getUserPostsAPI = {getUserPostsAPI}
      handleEditProfileSubmit={handleEditProfileSubmit}
+     handlePostSubmit={handlePostSubmit}
 
      />
-     
+    
        {/* Current Users Created:  */}
        {/* <UserList
        userData={userData}

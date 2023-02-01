@@ -2,15 +2,18 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import './Profile.css';
+import PostData from "./PostData";
 
 
 
 
 const Profile = (props) => {
-  console.log(props.currentUser);
+  console.log(props.profileData);
+  
 return(
+  
   <section className="profile-background">
-
+  
 
   Logged in as:  
   
@@ -19,14 +22,48 @@ return(
   address : {props.currentUser.address}
   <p></p>
   user ID :{props.currentUser.user_id}
- <p></p>
- 
-  <button className="btn" onClick={() => props.postClick()}>Make a Post</button><button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
-  {/* {props.getPosts} */}
-  </section>
-    
-)
+  
+<p></p>
 
-};
+ 
+  <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
+  <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
+  <button className="bton" onClick={() => props.logout()}>Logout</button>
+
+<section className="post"
+>
+   {props.profileData.map((post)=> (
+    
+  <div className="post-data">post#: {post.post_id} <p></p>
+  formula :{post.formula_name} 
+  <p></p>Adddress: {post.address}
+  <p></p>Date: {post.date}
+  <p></p>Picked Up? : {post.available ? "No":"Yes"}
+  <p></p>
+  <button>map</button>
+  <p></p></div>
+
+  ))}
+
+</section>
+
+
+
+
+   {/* {props.profileData.map((post) => (
+    <PostData
+    key={post.post_id}
+    post_id={post.post_id}
+    quantity={post.quantity}
+    forumla_name={post.forumla_name}
+    username={post.username}
+    address={post.address}
+    />
+   ))} */}
+
+  </section>
+ 
+)};
+
 
 export default Profile;

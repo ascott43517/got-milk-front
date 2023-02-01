@@ -40,6 +40,9 @@ const PageContent = (props) => {
     getPosts = {props.getPosts}
     profileData={props.profileData}
     setProfileData={props.setProfileData}
+    logout={props.logout}
+    getUserPostAPI = {props.getUserPostAPI}
+    handleLoginSubmit={props.handleLoginSubmit}
     />
    }
    if (currentPage ==="Post"){
@@ -47,7 +50,9 @@ const PageContent = (props) => {
     postclick={props.postClick}
     currentUser = {props.currentUser}
     setCurrentUser = {props.setCurrentUser}
-    setCurrentPageName= {props.setCurrentPageName}/>
+    setCurrentPageName= {props.setCurrentPageName}
+    handlePostSubmit={props.handlePostSubmit}
+    editUserClick={props.editUserClick}/>
    }
    if (currentPage ==="Edit-User"){
     return <Edit
