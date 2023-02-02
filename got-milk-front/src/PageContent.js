@@ -6,6 +6,7 @@ import NewUserForm from "./NewUserForm";
 import Profile from "./Profile";
 import Post from "./Post";
 import Edit from "./Edit";
+import Dashboard from "./Dashboard";
 
 
 
@@ -28,7 +29,9 @@ const PageContent = (props) => {
     setCurrentPageName = {props.setCurrentPageName}
     currentPage={props.currentPageName}
     handleLoginSubmit = {props.handleLoginSubmit}
-    setCurrentUser={props.setCurrentUser}/>
+    setCurrentUser={props.setCurrentUser}
+    // getAllPosts={props.getAllPosts}
+    />
    }
    if (currentPage ==="Profile"){
     return <Profile 
@@ -43,11 +46,12 @@ const PageContent = (props) => {
     logout={props.logout}
     getUserPostAPI = {props.getUserPostAPI}
     handleLoginSubmit={props.handleLoginSubmit}
+    dashboardClick={props.dashboardClick}
     />
    }
    if (currentPage ==="Post"){
     return <Post
-    postclick={props.postClick}
+    // postclick={props.postClick}
     currentUser = {props.currentUser}
     setCurrentUser = {props.setCurrentUser}
     setCurrentPageName= {props.setCurrentPageName}
@@ -61,6 +65,23 @@ const PageContent = (props) => {
     setCurrentUser = {props.setCurrentUser}
     setCurrentPageName= {props.setCurrentPageName}
     handleEditProfileSubmit = {props.handleEditProfileSubmit}
+    postClick={props.postClick}
+    dashboardClick={props.dashboardClick}
+    />
+   }
+   if (currentPage ==="Dashboard"){
+    return <Dashboard
+    editUserClick={props.editUserClick}
+    currentUser = {props.currentUser}
+    setCurrentUser = {props.setCurrentUser}
+    setCurrentPageName= {props.setCurrentPageName}
+    postClick={props.postClick}
+    logout={props.logout}
+    handlePostSubmit={props.handlePostSubmit}
+    currentPage={props.currentPage}
+    profileData={props.profileData}
+    setProfileData={props.setProfileData}
+    getAllPosts={props.getAllPosts}
     />
    }
 }

@@ -16,7 +16,19 @@ import PostData from './PostData';
 const kBaseUrl = "http://localhost:5000/"
 
 
-
+const getAllPostsApi = () => {
+    return axios
+      .get(`${kBaseUrl}/posts`)
+       .then((response) => {
+        
+         return response.data;
+        
+       })
+       .catch((err) => {
+         console.log(err);
+       });
+   };
+  
 const getAllUsersApi = () => {
   return axios
     .get(`${kBaseUrl}/users`)
@@ -157,13 +169,17 @@ function App() {
       
       createPostAPI(newPostFormulaName)
       .then((newUser) => {
+        console.log('create post response')
+        console.log(newUser)
         console.log(newPostFormulaName)
         
+        
  
-      setCurrentPageName("Profile")
-      getUserPostsAPI(newUser.user_id).then((user) =>{
+      setCurrentPageName("Dashboard")
+      getAllPostsApi().then((user) =>{
+        console.log('get all posts return')
         console.log(user)
-        setProfileData(user.posts)
+        setProfileData(user)
       })
       
       // .catch((e) => console.log(e));
@@ -192,13 +208,13 @@ function App() {
       if (user.username === newUserEmail){
        
           setCurrentUser(user);
-          setCurrentPageName("Profile");
+          setCurrentPageName("Dashboard");
           // getUserPostsAPI(user.user_id)
         //  console.log(getUserPostsAPI(user.user_id));
       }
-      getUserPostsAPI(user.user_id).then((user) =>{
+      getAllPostsApi().then((user) =>{
         console.log(user)
-        setProfileData(user.posts)
+        setProfileData(user)
       })
      }) 
      setCurrentPageName("New-User")
@@ -236,6 +252,9 @@ function App() {
    .catch((e) => console.log(e));
   };
 
+  const dashboardClick = () => {
+    setCurrentPageName("Dashboard")
+   }
 
   const postClick = () => {
     setCurrentPageName("Post")
@@ -282,6 +301,7 @@ function App() {
     getUserPostsAPI = {getUserPostsAPI}
      handleEditProfileSubmit={handleEditProfileSubmit}
      handlePostSubmit={handlePostSubmit}
+     dashboardClick={dashboardClick}
 
      />
     

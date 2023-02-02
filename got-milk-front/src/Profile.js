@@ -29,6 +29,7 @@ return(
   <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
   <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
+  <button className="bton" onClick={() => props.dashboardClick()}>Go to Dashboard</button>
 
 <section className="post"
 >
