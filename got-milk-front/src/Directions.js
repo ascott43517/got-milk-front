@@ -48,8 +48,13 @@ const directionsAPI = (data) => {
 const Directions = (props) => {
   const [origin, setOrigin] = useState([])
   return (
-    null
-  );
+    <section className="profile-background">
+    <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
+    <button className="bton" onClick={() => props.logout()}>Logout</button>
+    <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
+    <button className="bton" onClick={() => props.profileClick()}>Profile</button>
+  </section>);
 }
+
 
 export default Directions;

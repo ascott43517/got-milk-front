@@ -43,6 +43,10 @@ import { useState } from "react";
           <div className="auth-form-container">
           
             <h2>Edit Your Profile!</h2>
+            <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
+            <button className="bton" onClick={() => props.logout()}>Logout</button>
+            <button className="bton" onClick={() => props.profileClick()}>Profile</button>
+            <button className="bton" onClick={() => props.directionsClick()}>Directions</button>
           <form className= 'create-user-form'onSubmit={handleSubmit}>
             
               <label htmlFor="username"> Username</label>

@@ -30,6 +30,7 @@ return(
   <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
   <button className="bton" onClick={() => props.dashboardClick()}>Go to Dashboard</button>
+  <button className="bton" onClick={() => props.dashboardClick()}>Directions</button>
 
 <section className="post"
 >

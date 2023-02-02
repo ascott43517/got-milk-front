@@ -6,7 +6,7 @@ import './Profile.css';
 
 
 
-const PostData = (props) => {
+const Directions = (props) => {
 
   return (
 
@@ -24,4 +24,4 @@ const PostData = (props) => {
 
 
 
-export default PostData;
+export default Directions;

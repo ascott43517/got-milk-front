@@ -10,6 +10,7 @@ import './Login.css';
 import PageContent from './PageContent';
 import Profile from './Profile';
 import PostData from './PostData';
+import { attributesToProps } from 'html-react-parser';
 
 
 
@@ -264,6 +265,11 @@ function App() {
     setCurrentPageName("Edit-User")
   }
 
+
+  const directionsClick = () => {
+setCurrentPageName("Directions")
+  }
+
   const profileClick = () => {
     setCurrentPageName("Profile")
     getUserPostsAPI(currentUser.user_id)
@@ -316,6 +322,7 @@ function App() {
      handlePostSubmit={handlePostSubmit}
      dashboardClick={dashboardClick}
      profileClick={profileClick}
+     directionsClick={directionsClick}
 
      />
     

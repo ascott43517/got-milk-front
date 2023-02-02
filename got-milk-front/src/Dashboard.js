@@ -13,6 +13,7 @@ return (
   <button className="bton" onClick={() => props.logout()}>Logout</button>
   <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
   <button className="bton" onClick={() => props.profileClick()}>Profile</button>
+  <button className="bton" onClick={() => props.directionsClick()}>Directions</button>
 <p></p>
  All Posts:
  <p></p>
