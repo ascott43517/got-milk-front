@@ -22,7 +22,8 @@ const PageContent = (props) => {
     />
   }
   if (currentPage === "Directions") {
-    return <Directions/>
+    return <Directions
+    profileclick={props.profileclick}/>
   }
    if (currentPage === "Login") {
     return <Login 
@@ -56,7 +57,8 @@ const PageContent = (props) => {
     setCurrentUser = {props.setCurrentUser}
     setCurrentPageName= {props.setCurrentPageName}
     handlePostSubmit={props.handlePostSubmit}
-    editUserClick={props.editUserClick}/>
+    editUserClick={props.editUserClick}
+    profileclick={props.profileclick}/>
    }
    if (currentPage ==="Edit-User"){
     return <Edit
@@ -67,6 +69,7 @@ const PageContent = (props) => {
     handleEditProfileSubmit = {props.handleEditProfileSubmit}
     postClick={props.postClick}
     dashboardClick={props.dashboardClick}
+    profileclick={props.profileclick}
     />
    }
    if (currentPage ==="Dashboard"){
@@ -82,6 +85,7 @@ const PageContent = (props) => {
     profileData={props.profileData}
     setProfileData={props.setProfileData}
     getAllPosts={props.getAllPosts}
+    profileClick={props.profileClick}
     />
    }
 }

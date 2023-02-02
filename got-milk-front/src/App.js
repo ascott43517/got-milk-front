@@ -264,6 +264,19 @@ function App() {
     setCurrentPageName("Edit-User")
   }
 
+  const profileClick = () => {
+    setCurrentPageName("Profile")
+    getUserPostsAPI(currentUser.user_id)
+    .then((posts) => {
+      console.log(posts)
+      setProfileData(posts.posts);
+
+     })
+     .catch((e) => console.log(e));
+     };
+
+
+  
   const getPosts = (user_id) => {
     getUserPostsAPI(user_id)
     .then((posts) => {
@@ -302,6 +315,7 @@ function App() {
      handleEditProfileSubmit={handleEditProfileSubmit}
      handlePostSubmit={handlePostSubmit}
      dashboardClick={dashboardClick}
+     profileClick={profileClick}
 
      />
     

@@ -12,15 +12,18 @@ return (
   <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
   <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
+  <button className="bton" onClick={() => props.profileClick()}>Profile</button>
 <p></p>
  All Posts:
+ <p></p>
+ <p></p>
  {props.profileData.map((post)=> (
     
     <div className="post-data">posted by#: {post.username} <p></p>
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
     <p></p>Date: {post.date}
-    <p></p>Picked Up? : {post.available ? "Yes":"No"}
+    <p></p>Picked Up? : {post.available ? "No":"Yes"}
     <p></p>
     <button>Map It</button>
     <p></p></div>

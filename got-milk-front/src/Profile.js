@@ -33,6 +33,12 @@ return(
 
 <section className="post"
 >
+  <p></p>
+  Posts by You:
+  <p>
+    <p></p>
+    <p></p>
+  </p>
    {props.profileData.map((post)=> (
     
   <div className="post-data">posted by#: {post.username} <p></p>
