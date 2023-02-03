@@ -33,7 +33,11 @@ const PageContent = (props) => {
     profileData={props.profileData}
     setProfileData={props.setProfileData}
     logout={props.logout}
-    directionsClick={props.directionsClick}/>
+    directionsClick={props.directionsClick}
+    getDirections={props.getDirections}
+    address={props.address}
+    setaddress={props.setaddress}
+    time={props.time}/>
   }
    if (currentPage === "Login") {
     return <Login 

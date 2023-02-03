@@ -24,9 +24,9 @@ return (
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
     <p></p>Date: {post.date}
-    <p></p>Picked Up? : {post.available ? "No":"Yes"}
+    <p></p>Picked Up? : {post.available ? "Yes":"No"}
     <p></p>
-    <button>Map It</button>
+    <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address})}>Map It</button>
     <p></p></div>
   
   // const dashboardClick = () => {

@@ -11,6 +11,7 @@ import PageContent from './PageContent';
 import Profile from './Profile';
 import PostData from './PostData';
 import { attributesToProps } from 'html-react-parser';
+import {useJsApiLoader,GoogleMap} from '@react-google-maps/api'
 
 
 
@@ -98,8 +99,22 @@ const getUserPostsAPI = (user_id) => {
 
 }
 
-
 const createPostAPI = (data,) => {
+  const currentData = {...data}
+ 
+  return axios
+  .post(`${kBaseUrl}posts`, data)
+  .then((response) => {
+    return(response.data);
+  })
+  .catch((err) => {
+    
+    console.log(err);
+  })
+
+}
+
+const markPostApi = (data,) => {
   const currentData = {...data}
  
   return axios
@@ -119,10 +134,10 @@ const createPostAPI = (data,) => {
 
 
 
+
 const directionsAPI = (data) => {
-  const currentData = {...data};
   return axios 
-  .get(`${kBaseUrl}/maps`, currentData)
+  .post(`${kBaseUrl}/maps`, data)
   .then((response) => {
     return response.data;
   })
@@ -138,6 +153,7 @@ function App() {
   const [currentPageName, setCurrentPageName] = useState('Login')
   const [currentUser, setCurrentUser] = useState([])
   const [profileData, setProfileData] = useState([])
+  const [time, setTime] = useState([])
 
 
   const toggleForm = (formName) => {
@@ -203,7 +219,7 @@ function App() {
 
 
   const handleLoginSubmit = (newUserEmail) => {
-      
+    console.log(newUserEmail)
       getUserAPI(newUserEmail)
       .then((user) => {
       if (user.username === newUserEmail){
@@ -225,27 +241,29 @@ function App() {
     };
   
 
-  const getDirections = (address) => {
-
-   directionsAPI(address)
+  const getDirections = (data) => {
+   console.log(data)
+   directionsAPI(data)
    .then((directions) => {
     const legs = [];
     const steps = directions.routes[0].legs[0].steps
+    const duration = directions.routes[0].legs[0].duration.text
     for(let i = 0; i< steps.length; i++){
-     const a = steps[i].html_instructions.replace(/<[^>]*>/g,'')
+      const a = steps[i].html_instructions.replace(/<[^>]*>/g,'')
       
       
     
       // legs.push(steps[i].html_instructions)
-      legs.push(i+1 + ".")
-      legs.push(a)
-      legs.push('')
+      legs.push(i+1 + "."+ a)
+      // legs.push(a)
+      // legs.push('')
    
     }
     // directions.routes[0].legs[0].duration.text
     // console.log(steps[i].html_instructions)
     
-    setaddress(legs) 
+    setaddress(legs)
+    setTime(duration) 
     
     // console.log(legs)
   
@@ -266,8 +284,11 @@ function App() {
   }
 
 
-  const directionsClick = () => {
+  const directionsClick = (data) => {
+
+    console.log(data)
 setCurrentPageName("Directions")
+getDirections(data);
   }
 
   const profileClick = () => {
@@ -323,6 +344,11 @@ setCurrentPageName("Directions")
      dashboardClick={dashboardClick}
      profileClick={profileClick}
      directionsClick={directionsClick}
+     getDirections={getDirections}
+     setaddress={setaddress}
+     address={address}
+     time={time}
+     setTime={setTime}
 
      />
     

@@ -4,7 +4,7 @@
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(79deg,#fafbf9,#e9eb71 48%, #87e655); 
+    background-image: linear-gradient(79deg,#fafbf9,#f9f9f4 48%, #81847f); 
     flex-direction: column;
     color:white;
     
@@ -15,7 +15,7 @@
   .login-form, .create-user-form {
     display:flex;
     flex-direction: column;
-    border: 1px solid rgb(30, 170, 32);
+    border: 1px solid rgb(9, 9, 9);
     border-radius: 10px;
     padding: 5rem;
     margin: 0.5rem
@@ -41,7 +41,7 @@
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(22, 204, 37)
+    color: rgb(3, 3, 3)
     
 
   }
