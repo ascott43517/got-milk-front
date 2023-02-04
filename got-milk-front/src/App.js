@@ -79,8 +79,8 @@ const getUserAPI = (username) => {
     return (response.data);
   })
   .catch((err) => {
-    
-    console.log(err);
+    return alert("That user does not exist! Please create one")
+    // console.log(err);
   })
 
 }
@@ -114,11 +114,11 @@ const createPostAPI = (data,) => {
 
 }
 
-const markPostApi = (data,) => {
-  const currentData = {...data}
+const markPostApi = (post_id) => {
+  
  
   return axios
-  .post(`${kBaseUrl}posts`, data)
+  .patch(`${kBaseUrl}posts/${post_id}/unavailable`,)
   .then((response) => {
     return(response.data);
   })
@@ -128,12 +128,6 @@ const markPostApi = (data,) => {
   })
 
 }
-
-
-
-
-
-
 
 const directionsAPI = (data) => {
   return axios 
@@ -235,7 +229,7 @@ function App() {
       })
      }) 
      setCurrentPageName("New-User")
-    //  alert("No user")
+    
      
       // .catch((e) =>   console.log(e))
     };
@@ -273,7 +267,11 @@ function App() {
 
   const dashboardClick = () => {
     setCurrentPageName("Dashboard")
-   }
+    getAllPostsApi().then((user) =>{
+      console.log(user)
+      setProfileData(user)
+   })
+  }
 
   const postClick = () => {
     setCurrentPageName("Post")
@@ -288,7 +286,9 @@ function App() {
 
     console.log(data)
 setCurrentPageName("Directions")
+
 getDirections(data);
+markPost(data.post)
   }
 
   const profileClick = () => {
@@ -317,6 +317,18 @@ getDirections(data);
      const logout = () => {
       setCurrentPageName("Login")
     }
+
+
+
+    const markPost = (post_id) => {
+markPostApi(post_id)
+.then ((post)=> {
+  console.log(post);
+})
+.catch((e) => console.log(e))
+
+    };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -349,6 +361,7 @@ getDirections(data);
      address={address}
      time={time}
      setTime={setTime}
+     GoogleMap={GoogleMap}
 
      />
     

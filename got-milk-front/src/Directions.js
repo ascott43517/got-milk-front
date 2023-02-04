@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import {useJsApiLoader,GoogleMap} from '@react-google-maps/api'
+import {GoogleMap, useJsApiLoader} from '@react-google-maps/api'
 
 const kBaseUrl = "http://localhost:5000/"
 
@@ -49,16 +49,12 @@ const getDirections = (address) => {
   };
 
 
-
+const center = {lat: 48.85, lng: 2.2945}
 
 const Directions = (props) => {
-  const [origin, setOrigin] = useState([])
+  const [origin, setOrigin] = useState([]);
 
-  // const isLoaded = props.address
-
-  // if (isLoaded){
-  //   return "Loading"
-  // }
+  
 return (
     <section className="profile-background">
      <div className="dashboard">Stay calm! You are only {props.time} from feeding your baby! </div>
@@ -68,8 +64,12 @@ return (
 
     <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
     <button className="bton" onClick={() => props.logout()}>Logout</button>
-    <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
-    <button className="bton" onClick={() => props.profileClick()}>Profile</button>
+    {/* <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button> */}
+    <button className="bton" onClick={() => props.dashboardClick()}>Dashboard</button>
+    <p></p>
+
+    ONE DAY A MAP MIGHT GO HERE LOL
+ 
     <p></p>
 
        Directions to your forumula:
@@ -79,9 +79,9 @@ return (
       {step}</div>))}
   </section>
 );
+    }
 
 
-}
 
 
 export default Directions;

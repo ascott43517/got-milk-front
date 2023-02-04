@@ -31,11 +31,14 @@ const NewUserForm = (props) => {
     <form className= 'create-user-form'onSubmit={handleSubmit}>
       
         <label htmlFor="address"> Address</label>
-        <input type="text" id="address"name="address" value={formData.address} onChange={handleChange} placeholder="Enter Address"/>
+        <input type="text" id="address"name="address" value={formData.address} onChange={handleChange} placeholder="Enter Your Address"/>
          <p></p>
         <label htmlFor="username"> Email</label>
         <input type="text" id="username"name="username" value={formData.username} onChange={handleChange} placeholder="youremail@gmail.com"/>
         <p></p>
+        <label htmlFor="username"> Password</label>
+        <input type="password" placeholder="********" id="password" value={formData.password} onChange={handleChange} name="password"/>
+  <p></p>
       <input  className = 'create-user-btn' type ="submit" value="Create New User"/>
       <p></p>
       

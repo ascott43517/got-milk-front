@@ -43,10 +43,10 @@ import { useState } from "react";
           <div className="auth-form-container">
           
             <h2>Edit Your Profile!</h2>
-            <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
-            <button className="bton" onClick={() => props.logout()}>Logout</button>
-            <button className="bton" onClick={() => props.profileClick()}>Profile</button>
-            <button className="bton" onClick={() => props.directionsClick()}>Directions</button>
+            {/* <button className="btn" onClick={() => props.postClick()}>Make a Post</button> */}
+            {/* <button className="bton" onClick={() => props.logout()}>Logout</button>
+            <button className="bton" onClick={() => props.profileClick()}>Back to Profile</button> */}
+            {/* <button className="bton" onClick={() => props.directionsClick()}>Directions</button> */}
           <form className= 'create-user-form'onSubmit={handleSubmit}>
             
               <label htmlFor="username"> Username</label>
@@ -57,10 +57,13 @@ import { useState } from "react";
               <input type="address" id="address"name="address" value={formData.address} onChange={handleChange} placeholder={props.currentUser.address}/>
               <p></p>
               <input  className = 'create-user-btn' type ="submit" value="Save Changes"/>
+
+              
               <p></p>
-            
+              
         </form>
-         
+        <button className="bton" onClick={() => props.profileClick()}>Back to Profile</button>
+        <button className="bton" onClick={() => props.logout()}>Logout</button>
           </div>
           </section>
         )

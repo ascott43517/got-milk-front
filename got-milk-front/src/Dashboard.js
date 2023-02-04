@@ -11,9 +11,9 @@ return (
    
   <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
-  <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
+  {/* <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button> */}
   <button className="bton" onClick={() => props.profileClick()}>Profile</button>
-  <button className="bton" onClick={() => props.directionsClick()}>Directions</button>
+  {/* <button className="bton" onClick={() => props.directionsClick()}>Directions</button> */}
 <p></p>
  All Posts:
  <p></p>
@@ -24,9 +24,9 @@ return (
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
     <p></p>Date: {post.date}
-    <p></p>Picked Up? : {post.available ? "Yes":"No"}
+    <p></p>Available? : {post.available === true ? "Yes":"No"}
     <p></p>
-    <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address})}>Map It</button>
+    <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address, "post":post.post_id})}>Map It</button>
     <p></p></div>
   
   // const dashboardClick = () => {

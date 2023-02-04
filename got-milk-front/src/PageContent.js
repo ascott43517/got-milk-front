@@ -37,7 +37,8 @@ const PageContent = (props) => {
     getDirections={props.getDirections}
     address={props.address}
     setaddress={props.setaddress}
-    time={props.time}/>
+    time={props.time}
+    GoogleMap={props.GoogleMap}/>
   }
    if (currentPage === "Login") {
     return <Login 
