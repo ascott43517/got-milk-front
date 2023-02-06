@@ -39,3 +39,25 @@
     color: #040404;
 
 }
+
+.green {
+    background-color: rgb(119, 170, 119);
+    padding:1rem;
+    border-radius: 20%;
+    border-width: 0.5rem;
+    border-style:ridge;
+    border-color: rgb(1, 1, 1);
+    justify-content: center;
+    display:inline-block;
+}
+
+.red {
+    background-color: rgb(155, 72, 72);
+    padding:1rem;
+    border-radius: 20%;
+    border-width: 0.5rem;
+    border-style:ridge;
+    border-color: rgb(1, 1, 1);
+    justify-content: center;
+    display:inline-block;
+}

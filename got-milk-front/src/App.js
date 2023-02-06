@@ -264,8 +264,8 @@ function App() {
 
   const getDirections = (data) => {
    console.log(data)
-   getLatLngPost(data.post_address)
-   getLatLng(data.origin)
+  //  getLatLngPost(data.post_address)
+  //  getLatLng(data.origin)
    directionsAPI(data)
    .then((directions) => {
     const legs = [];
@@ -351,13 +351,13 @@ function App() {
 
     console.log(data)
 
-// getLatLng(data.origin)
-//  getLatLngPost(data.post_address)
+getLatLng(data.origin)
+  getLatLngPost(data.post_address)
 getDirections(data);
 // setCurrentPageName("Directions")
 markPost(data.post)
 setPostAddress(data.post_address)
-// setCurrentPageName("Directions")
+ setCurrentPageName("Directions")
 
 
 

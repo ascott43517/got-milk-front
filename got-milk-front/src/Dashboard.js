@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 
 const Dashboard = (props) => {
+
+
 return (
 <section className="profile-background">
   Milk Dashboard!
@@ -19,8 +21,8 @@ return (
  <p></p>
  <p></p>
  {props.profileData.map((post )=> (
-    
-    <div className="post-data">  posted by#: {post.username} <p></p>
+    // color = props.post.available  ? 'red':'green'
+    <div className={post.available ? "green":"red"} >  posted by#: {post.username} <p></p>
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
     <p></p>Date: {post.date}
