@@ -18,15 +18,15 @@ return (
  All Posts:
  <p></p>
  <p></p>
- {props.profileData.map((post)=> (
+ {props.profileData.map((post )=> (
     
-    <div className="post-data">posted by#: {post.username} <p></p>
+    <div className="post-data">  posted by#: {post.username} <p></p>
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
     <p></p>Date: {post.date}
     <p></p>Available? : {post.available === true ? "Yes":"No"}
     <p></p>
-    <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address, "post":post.post_id})}>Map It</button>
+    <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address, "post":post.post_id, "post_address":post.address})}>Map It</button>
     <p></p></div>
   
   // const dashboardClick = () => {

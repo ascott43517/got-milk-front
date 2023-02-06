@@ -140,6 +140,28 @@ const directionsAPI = (data) => {
   })
 
 }
+
+const LatLngAPI = (datas) => {
+  const data = {"q": datas}
+  console.log(data)
+  return axios 
+  .post(`${kBaseUrl}/maps/latlng`, data )
+  .then((response) => {
+  
+    const lat = response.data[0].lat;
+    const lon = response.data[0].lon;
+
+    console.log("lat:" + lat)
+    ;
+  return { lat: lat, lng: lon }
+    
+   
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+
+}
 function App() {
   const [currentForm, setCurrentForm] = useState('Login')
   const [userData, setUserData] = useState([])
@@ -148,6 +170,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState([])
   const [profileData, setProfileData] = useState([])
   const [time, setTime] = useState([])
+  const [lng, setLng] = useState([])
+  const [lat, setLat] = useState([])
+  const [postAddress, setPostAddress] = useState([])
+  const [postlng, setPostLng] = useState([])
+  const [postlat, setPostLat] = useState([])
 
 
   const toggleForm = (formName) => {
@@ -161,7 +188,7 @@ function App() {
   }
   useEffect(() => {
     // data fetching code
-    getAllUsers();
+    ;
   }, [currentUser]);
 
 
@@ -237,6 +264,8 @@ function App() {
 
   const getDirections = (data) => {
    console.log(data)
+   getLatLngPost(data.post_address)
+   getLatLng(data.origin)
    directionsAPI(data)
    .then((directions) => {
     const legs = [];
@@ -258,12 +287,48 @@ function App() {
     
     setaddress(legs)
     setTime(duration) 
+    setCurrentPageName("Directions")
+   
     
     // console.log(legs)
   
    })
    .catch((e) => console.log(e));
   };
+
+
+  const getLatLng = (address) => {
+    
+    LatLngAPI(address)
+    .then((response) => {
+    console.log('Lat Lng response:')
+     console.log (response)
+     setLat(parseFloat(response["lat"]))
+     setLng(parseFloat(response["lng"]))
+    //  console.log(response["lat"]);
+    //  console.log(response["lng"]);
+     
+     })
+    .catch((e) => console.log(e));
+   };
+
+   const getLatLngPost = (address) => {
+    
+    LatLngAPI(address)
+    .then((response) => {
+    console.log('Lat Lng response post:')
+     console.log (response)
+     const lat = (parseFloat(response["lat"]))
+     const lng = (parseFloat(response["lng"]))
+     setPostLat(lat);
+     setPostLng(lng);
+  
+ 
+;
+     
+     })
+    .catch((e) => console.log(e));
+   };
 
   const dashboardClick = () => {
     setCurrentPageName("Dashboard")
@@ -285,10 +350,18 @@ function App() {
   const directionsClick = (data) => {
 
     console.log(data)
-setCurrentPageName("Directions")
 
+// getLatLng(data.origin)
+//  getLatLngPost(data.post_address)
 getDirections(data);
+// setCurrentPageName("Directions")
 markPost(data.post)
+setPostAddress(data.post_address)
+// setCurrentPageName("Directions")
+
+
+
+// use data.address to get post address to store soe
   }
 
   const profileClick = () => {
@@ -334,7 +407,7 @@ markPostApi(post_id)
       <header className="App-header">
       <section className="U">
       
-      {/* {currentForm === "login" ? <Login onFormSwitch = {toggleForm} /> : <CreateUserScreen handleUserSubmit={handleUserSubmit} onFormSwitch={toggleForm}/>} */}
+     
       </section>
        <section className='Users'>
      <PageContent
@@ -361,7 +434,16 @@ markPostApi(post_id)
      address={address}
      time={time}
      setTime={setTime}
-     GoogleMap={GoogleMap}
+     getLatLng={getLatLng}
+     lat={lat}
+     lng={lng}
+     postAddress={postAddress}
+     getLatLngPost={getLatLngPost}
+     setPostAddress={setPostAddress}
+     setPostLng={setPostLng}
+     setPostLat={setPostLat}
+     postlat={postlat}
+     postlng={postlng}
 
      />
     

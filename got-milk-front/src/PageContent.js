@@ -38,7 +38,19 @@ const PageContent = (props) => {
     address={props.address}
     setaddress={props.setaddress}
     time={props.time}
-    GoogleMap={props.GoogleMap}/>
+    GoogleMap={props.GoogleMap}
+    getLatLng={props.getLatLng}
+    lng={props.lng}
+    lat={props.lat}
+    postAddress={props.postAddress}
+    getLatLngPost = {props.getLatLngPost}
+    setPostAddress={props.setPostAddress}
+    setPostLat = {props.setPostLat}
+    setPostLng={props.setPostLng}
+    postlat={props.postlat}
+    postlng={props.postlng}
+    setlng={props.setlng}
+    setlat={props.setlat}/>
   }
    if (currentPage === "Login") {
     return <Login 
@@ -105,6 +117,7 @@ const PageContent = (props) => {
     getAllPosts={props.getAllPosts}
     profileClick={props.profileClick}
     directionsClick={props.directionsClick}
+    
     />
    }
 }
