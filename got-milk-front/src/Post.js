@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Autocomplete } from "@react-google-maps/api";
 
 const kdefaultFormState = {
   address:"",
@@ -10,6 +11,7 @@ const kdefaultFormState = {
 };
 const Post = (props) => {
 const [formData, setFormData] = useState(kdefaultFormState);
+const autocomplete = useRef()
 
   
 const handleChange = (event) => {
@@ -19,6 +21,19 @@ const handleChange = (event) => {
     
     setFormData(newFormData)
    
+  }
+
+
+  const onLoad= (obj) => {
+    autocomplete.current = obj
+   
+  }
+
+
+  const handleAddressChange = () => {
+    if (autocomplete.current !== null) {
+     setFormData({...formData, address:autocomplete.current.getPlace().formatted_address})
+    }
   }
 
   const handleSubmit = (event) => {
@@ -43,7 +58,8 @@ const handleChange = (event) => {
             <p></p>
             
             <label htmlFor="address"> Formula Location</label>
-            <input type="address" id="address"name="address" value={formData.address} onChange={handleChange} placeholder="Enter Address"/>
+            <Autocomplete onPlaceChanged={handleAddressChange} onLoad={onLoad} >
+            <input type="address" id="address"name="address" value={formData.address} onChange={handleChange} placeholder="Enter Address"/></Autocomplete>
             <p></p>
             {/* <label htmlFor="username"> Username(email)</label>
             <input type="username" id="username" name="username" value={formData.username} onChange={handleChange} placeholder="Enter Username"/> */}
