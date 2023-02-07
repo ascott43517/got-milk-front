@@ -30,7 +30,7 @@ return(
   <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
   <button className="bton" onClick={() => props.dashboardClick()}>Back to Dashboard</button>
-  {/* <button className="bton" onClick={() => props.dashboardClick()}>Directions</button> */}
+ 
 
 <section className="post"
 >
@@ -40,7 +40,7 @@ Posts by You:
   
    {props.profileData.map((post)=> (
     
-  <div className="post-data">posted by#: {post.username} <p></p>
+  <div className={post.available ? "green":"red"}>posted by#: {post.username} <p></p>
   formula :{post.formula_name} 
   <p></p>Address: {post.address}
   <p></p>Date: {post.date}

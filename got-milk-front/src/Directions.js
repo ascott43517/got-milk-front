@@ -1,17 +1,16 @@
 import React from "react";
 import { useState } from "react";
 import './Profile.css';
-import {GoogleMap, LoadScript,Marker, useJsApiLoader} from '@react-google-maps/api'
+import {GoogleMap,Marker, } from '@react-google-maps/api'
 import './Directions.css';
 
 
-const YOUR_API_KEY = 'AIzaSyD8c9x3lhVeazWn29rL5HrWJgT6FAJ-Bqc'
 
 
 const containerStyle = {
   width: '500px',
   height: '500px',
-  // align:'center'
+  justify:'center'
 };
 
 
@@ -61,29 +60,26 @@ return (
 
     <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
     <button className="bton" onClick={() => props.logout()}>Logout</button>
-    {/* <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button> */}
     <button className="bton" onClick={() => props.dashboardClick()}>Dashboard</button>
     <p></p>
 
     <div style = {{align:center}}>ONE DAY A MAP MIGHT GO HERE LOL
-     <LoadScript
-      googleMapsApiKey= {YOUR_API_KEY}
-    > 
+    
       <GoogleMap
         mapContainerStyle={containerStyle}
         center= {{lat:props.lat, lng: props.lng}}
-        zoom={11}
+        zoom={10}
         options={{zoomControl:false,
                   streetViewControl: false,
                   mapTypeControl:false,
                   fullscreemControl: false
                 }}
       >
-  <Marker position={{lat:props.postlat, lng: props.postlng}}/>
-      <Marker position={{lat:props.lat, lng: props.lng}}/> 
+ { <Marker position={{lat:props.postlat, lng: props.postlng}}/>}
+     { <Marker position={{lat:props.lat, lng: props.lng}}/> }
         <></>
       </GoogleMap>
-     </LoadScript> 
+     {/* </LoadScript>  */}
      </div>
 
     <p></p>

@@ -1,5 +1,6 @@
 
-import { useState } from "react";
+import { Autocomplete } from "@react-google-maps/api";
+import { useState, useRef } from "react";
 import './NewUserForm.css';
 
 
@@ -10,16 +11,30 @@ const kdefaultFormState = {
 
 const NewUserForm = (props) => {
   const [formData, setFormData] = useState(kdefaultFormState);
+  const autocomplete = useRef()
 
   const handleChange = (event) => {
     const fieldValue = event.target.value;
     const fieldName = event.target.name
+    console.log(event)
     const newFormData = {...formData, [fieldName]: fieldValue}
     setFormData(newFormData)
   }
 
+  const onLoad= (obj) => {
+    autocomplete.current = obj
+   
+  }
+
+
+  const handleAddressChange = () => {
+    if (autocomplete.current !== null) {
+     setFormData({...formData, address:autocomplete.current.getPlace().formatted_address})
+    }
+  }
   const handleSubmit = (event) => {
     event.preventDefault();
+   
     props.handleUserSubmit(formData);
     setFormData(kdefaultFormState);
   };
@@ -29,9 +44,20 @@ const NewUserForm = (props) => {
     <div className="auth-form-container">
       <h2>Sign Up</h2>
     <form className= 'create-user-form'onSubmit={handleSubmit}>
-      
+   
         <label htmlFor="address"> Address</label>
-        <input type="text" id="address"name="address" value={formData.address} onChange={handleChange} placeholder="Enter Your Address"/>
+        <Autocomplete onPlaceChanged={handleAddressChange} onLoad={onLoad} >
+        <input  
+        name="address"
+        value = {formData.address}
+        onChange={handleChange}
+
+       
+      
+        
+        
+           
+             placeholder="Enter Your Address"/></Autocomplete>
          <p></p>
         <label htmlFor="username"> Email</label>
         <input type="text" id="username"name="username" value={formData.username} onChange={handleChange} placeholder="youremail@gmail.com"/>

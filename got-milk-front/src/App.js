@@ -10,10 +10,11 @@ import './Login.css';
 import PageContent from './PageContent';
 import Profile from './Profile';
 import PostData from './PostData';
-import { attributesToProps } from 'html-react-parser';
-import {useJsApiLoader,GoogleMap} from '@react-google-maps/api'
+
+import {useJsApiLoader,GoogleMap, LoadScript, Autocomplete} from '@react-google-maps/api'
 
 
+const YOUR_API_KEY = 'AIzaSyD8c9x3lhVeazWn29rL5HrWJgT6FAJ-Bqc'
 
 const kBaseUrl = "http://localhost:5000/"
 
@@ -80,13 +81,13 @@ const getUserAPI = (username) => {
   })
   .catch((err) => {
     return alert("That user does not exist! Please create one")
-    // console.log(err);
+    
   })
 
 }
 
 const getUserPostsAPI = (user_id) => {
-  const currentData = {...user_id}
+  // const currentData = {...user_id}
   return axios
   .get(`${kBaseUrl}/users/${user_id}/posts`)
   .then((response) => {
@@ -100,8 +101,6 @@ const getUserPostsAPI = (user_id) => {
 }
 
 const createPostAPI = (data,) => {
-  const currentData = {...data}
- 
   return axios
   .post(`${kBaseUrl}posts`, data)
   .then((response) => {
@@ -162,6 +161,9 @@ const LatLngAPI = (datas) => {
   })
 
 }
+
+
+const library = ['places']
 function App() {
   const [currentForm, setCurrentForm] = useState('Login')
   const [userData, setUserData] = useState([])
@@ -194,6 +196,9 @@ function App() {
 
   const handleUserSubmit = (newUserAddress,newUserUsername) => {
 
+
+
+console.log(newUserAddress)
      addNewUserApi(newUserAddress, newUserUsername )
      .then((newUser) => {
       console.log(newUser);
@@ -268,6 +273,7 @@ function App() {
   getLatLng(data.origin)
    directionsAPI(data)
    .then((directions) => {
+    console.log(directions)
     const legs = [];
     const steps = directions.routes[0].legs[0].steps
     const duration = directions.routes[0].legs[0].duration.text
@@ -403,6 +409,8 @@ markPostApi(post_id)
     };
 
   return (
+    <LoadScript googleMapsApiKey={YOUR_API_KEY} libraries= {library}>
+      
     <div className="App">
       <header className="App-header">
       <section className="U">
@@ -458,6 +466,8 @@ markPostApi(post_id)
       {address}  */}
       </header>
     </div>
+    
+    </LoadScript>
   );
   };
 
