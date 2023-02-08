@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+
 
 const Dashboard = (props) => {
 
@@ -13,15 +13,14 @@ return (
    
   <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
   <button className="bton" onClick={() => props.logout()}>Logout</button>
-  {/* <button className="btnn" onClick={() => props.editUserClick()}>Edit User Information</button> */}
   <button className="bton" onClick={() => props.profileClick()}>Profile</button>
-  {/* <button className="bton" onClick={() => props.directionsClick()}>Directions</button> */}
+ 
 <p></p>
  All Posts:
  <p></p>
  <p></p>
  {props.profileData.map((post )=> (
-    // color = props.post.available  ? 'red':'green'
+  
     <div className={post.available ? "green":"red"} >  posted by#: {post.username} <p></p>
     formula :{post.formula_name} 
     <p></p>Address: {post.address}
@@ -30,30 +29,6 @@ return (
     <p></p>
     <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address, "post":post.post_id, "post_address":post.address})}>Map It</button>
     <p></p></div>
-  
-  // const dashboardClick = () => {
-  //   setCurrentPageName("Dashboard")
-  // }
-
-  //  getAllPostsApi().then((user) =>{
-      //    console.log(user)
-      //   setProfileData(user)
-      //  })
-
-
-
-// const getAllPostsApi = () => {
-//   return axios
-//     .get(`${kBaseUrl}/posts`)
-//     .then((response) => {
-      
-//       return response.data;
-      
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// };
 
 
     ))}

@@ -1,17 +1,12 @@
 
 import './App.css';
-import Users from './Users';
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import UserList from './UserList';
-import NewUserForm from './NewUserForm';
-import Login from './Login';
 import './Login.css';
 import PageContent from './PageContent';
-import Profile from './Profile';
-import PostData from './PostData';
 
-import {useJsApiLoader,GoogleMap, LoadScript, Autocomplete} from '@react-google-maps/api'
+
+import {LoadScript} from '@react-google-maps/api'
 
 
 const YOUR_API_KEY = 'AIzaSyD8c9x3lhVeazWn29rL5HrWJgT6FAJ-Bqc'
@@ -72,7 +67,7 @@ const editUserApi = (username) => {
 
 
 const getUserAPI = (username) => {
-  const currentData = {...username}
+
  
   return axios
   .get(`${kBaseUrl}/users/${username}`)
@@ -87,7 +82,7 @@ const getUserAPI = (username) => {
 }
 
 const getUserPostsAPI = (user_id) => {
-  // const currentData = {...user_id}
+  
   return axios
   .get(`${kBaseUrl}/users/${user_id}/posts`)
   .then((response) => {
@@ -115,7 +110,6 @@ const createPostAPI = (data,) => {
 
 const markPostApi = (post_id) => {
   
- 
   return axios
   .patch(`${kBaseUrl}posts/${post_id}/unavailable`,)
   .then((response) => {
@@ -125,7 +119,6 @@ const markPostApi = (post_id) => {
     
     console.log(err);
   })
-
 }
 
 const directionsAPI = (data) => {
@@ -137,7 +130,6 @@ const directionsAPI = (data) => {
   .catch((err) => {
     console.log(err)
   })
-
 }
 
 const LatLngAPI = (datas) => {
@@ -149,19 +141,16 @@ const LatLngAPI = (datas) => {
   
     const lat = response.data[0].lat;
     const lon = response.data[0].lon;
-
     console.log("lat:" + lat)
     ;
   return { lat: lat, lng: lon }
     
-   
   })
   .catch((err) => {
     console.log(err)
   })
 
 }
-
 
 const library = ['places']
 function App() {
@@ -179,15 +168,6 @@ function App() {
   const [postlat, setPostLat] = useState([])
 
 
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-  const getAllUsers = () => {
-    getAllUsersApi().then((users) => {
-      setUserData(users)
-
-    })
-  }
   useEffect(() => {
     // data fetching code
     ;
@@ -225,7 +205,6 @@ console.log(newUserAddress)
         setProfileData(user)
       })
       
-      // .catch((e) => console.log(e));
       });
     };
 
@@ -233,16 +212,11 @@ console.log(newUserAddress)
       
       editUserApi(newUserAddress, newUserUsername)
       .then((newUser) => {
-       
-
         setCurrentPageName("Profile")
         setCurrentUser(newUser)
-      
-        
       })
       .catch((e) => console.log(e));
       };
-
 
   const handleLoginSubmit = (newUserEmail) => {
     console.log(newUserEmail)
@@ -252,8 +226,6 @@ console.log(newUserAddress)
        
           setCurrentUser(user);
           setCurrentPageName("Dashboard");
-          // getUserPostsAPI(user.user_id)
-        //  console.log(getUserPostsAPI(user.user_id));
       }
       getAllPostsApi().then((user) =>{
         console.log(user)
@@ -261,9 +233,6 @@ console.log(newUserAddress)
       })
      }) 
      setCurrentPageName("New-User")
-    
-     
-      // .catch((e) =>   console.log(e))
     };
   
 
@@ -280,28 +249,16 @@ console.log(newUserAddress)
     for(let i = 0; i< steps.length; i++){
       const a = steps[i].html_instructions.replace(/<[^>]*>/g,'')
       
-      
-    
-      // legs.push(steps[i].html_instructions)
-      legs.push(i+1 + "."+ a)
-      // legs.push(a)
-      // legs.push('')
-   
+      legs.push(i+1 + "."+ a) 
     }
-    // directions.routes[0].legs[0].duration.text
-    // console.log(steps[i].html_instructions)
-    
+   
     setaddress(legs)
     setTime(duration) 
     setCurrentPageName("Directions")
    
-    
-    // console.log(legs)
-  
    })
    .catch((e) => console.log(e));
   };
-
 
   const getLatLng = (address) => {
     
@@ -311,9 +268,7 @@ console.log(newUserAddress)
      console.log (response)
      setLat(parseFloat(response["lat"]))
      setLng(parseFloat(response["lng"]))
-    //  console.log(response["lat"]);
-    //  console.log(response["lng"]);
-     
+   
      })
     .catch((e) => console.log(e));
    };
@@ -328,9 +283,6 @@ console.log(newUserAddress)
      const lng = (parseFloat(response["lng"]))
      setPostLat(lat);
      setPostLng(lng);
-  
- 
-;
      
      })
     .catch((e) => console.log(e));
@@ -357,17 +309,12 @@ console.log(newUserAddress)
 
     console.log(data)
 
-// getLatLng(data.origin)
-//   getLatLngPost(data.post_address)
+
 getDirections(data);
-// setCurrentPageName("Directions")
+
 markPost(data.post)
 setPostAddress(data.post_address)
-//  setCurrentPageName("Directions")
 
-
-
-// use data.address to get post address to store soe
   }
 
   const profileClick = () => {
@@ -454,22 +401,12 @@ markPostApi(post_id)
      postlng={postlng}
 
      />
-    
-       {/* Current Users Created:  */}
-       {/* <UserList
-       userData={userData}
-       handleUserSubmit = {handleUserSubmit}/> */}
        </section>
-       {/* <button className='directions' onClick={() => getDirections(address)}>Get Directions </button> 
-      
-       
-      {address}  */}
       </header>
     </div>
     
     </LoadScript>
   );
   };
-
 
 export default App;

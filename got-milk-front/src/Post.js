@@ -6,7 +6,7 @@ const kdefaultFormState = {
   address:"",
   quantity:"",
   formula_name:"",
-  // username:"",
+
 
 };
 const Post = (props) => {

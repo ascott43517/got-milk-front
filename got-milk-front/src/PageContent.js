@@ -80,7 +80,6 @@ const PageContent = (props) => {
    }
    if (currentPage ==="Post"){
     return <Post
-    // postclick={props.postClick}
     currentUser = {props.currentUser}
     setCurrentUser = {props.setCurrentUser}
     setCurrentPageName= {props.setCurrentPageName}

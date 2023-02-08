@@ -1,8 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import axios from "axios";
 import './Profile.css';
-import PostData from "./PostData";
+
 
 
 
@@ -46,26 +44,11 @@ Posts by You:
   <p></p>Date: {post.date}
   <p></p>Available? : {post.available === true ? "Yes":"No"}
   <p></p>
-  <button>Map It</button>
   <p></p></div>
 
   ))}
 
 </section>
-
-
-
-
-   {/* {props.profileData.map((post) => (
-    <PostData
-    key={post.post_id}
-    post_id={post.post_id}
-    quantity={post.quantity}
-    forumla_name={post.forumla_name}
-    username={post.username}
-    address={post.address}
-    />
-   ))} */}
 
   </section>
  

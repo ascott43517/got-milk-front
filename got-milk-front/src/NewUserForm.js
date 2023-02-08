@@ -51,13 +51,7 @@ const NewUserForm = (props) => {
         name="address"
         value = {formData.address}
         onChange={handleChange}
-
-       
-      
-        
-        
-           
-             placeholder="Enter Your Address"/></Autocomplete>
+        placeholder="Enter Your Address"/></Autocomplete>
          <p></p>
         <label htmlFor="username"> Email</label>
         <input type="text" id="username"name="username" value={formData.username} onChange={handleChange} placeholder="youremail@gmail.com"/>
