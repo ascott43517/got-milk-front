@@ -11,7 +11,7 @@ import {LoadScript} from '@react-google-maps/api'
 
 const YOUR_API_KEY = 'AIzaSyD8c9x3lhVeazWn29rL5HrWJgT6FAJ-Bqc'
 
-const kBaseUrl = "http://localhost:5000/"
+const kBaseUrl = "https://got-milk.herokuapp.com/"
 
 
 const getAllPostsApi = () => {
