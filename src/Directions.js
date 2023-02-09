@@ -1,6 +1,6 @@
 import React from "react";
 import './Profile.css';
-import {GoogleMap,Marker, } from '@react-google-maps/api'
+import {GoogleMap,MarkerF, } from '@react-google-maps/api'
 import './Directions.css';
 
 
@@ -38,8 +38,8 @@ return (
                   fullscreemControl: false
                 }}
       >
-  <Marker position={{lat:props.postlat, lng: props.postlng}}/>
-     <Marker position={{lat:props.lat, lng: props.lng}}/> 
+  <MarkerF position={{lat:props.postlat, lng: props.postlng}}/>
+     <MarkerF position={{lat:props.lat, lng: props.lng}}/> 
         <></>
       </GoogleMap>
 
