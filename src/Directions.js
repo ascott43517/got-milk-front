@@ -38,8 +38,8 @@ return (
                   fullscreemControl: false
                 }}
       >
- { <Marker position={{lat:props.postlat, lng: props.postlng}}/>}
-    { <Marker position={{lat:props.lat, lng: props.lng}}/> }
+  <Marker position={{lat:props.postlat, lng: props.postlng}}/>
+     <Marker position={{lat:props.lat, lng: props.lng}}/> 
         <></>
       </GoogleMap>
 
