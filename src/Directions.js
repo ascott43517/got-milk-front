@@ -9,7 +9,7 @@ import './Directions.css';
 const containerStyle = {
   width: '500px',
   height: '500px',
-  justify:'center'
+  textalign:'center'
 };
 
 const Directions = (props) => {

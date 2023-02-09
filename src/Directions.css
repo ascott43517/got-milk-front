@@ -2,4 +2,11 @@
     text-align: center;
     background-color: aquamarine;
     justify-content: right;
+    align-content: center;
+    padding-left: 4rem;
+}
+
+.dashboard {
+    font-weight: 400;
+    font-size: larger;
 }
