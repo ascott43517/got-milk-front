@@ -75,7 +75,7 @@ const getUserAPI = (username) => {
     return (response.data);
   })
   .catch((err) => {
-    return alert("That user does not exist! Please create one")
+    return alert(` User ${username} does not exist! Please create a new user`)
     
   })
 

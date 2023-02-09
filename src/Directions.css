@@ -3,10 +3,10 @@
     background-color: aquamarine;
     justify-content: right;
     align-content: center;
-    padding-left: 4rem;
+    padding: 4rem;
 }
 
 .dashboard {
     font-weight: 400;
-    font-size: larger;
+    font-size: x-large;
 }
