@@ -1,4 +1,5 @@
 import React from "react";
+import './Profile.css'; 
 
 
 const Dashboard = (props) => {
@@ -6,18 +7,24 @@ const Dashboard = (props) => {
 
 return (
 <section className="profile-background">
-  Milk Dashboard!
+{/* <div class="jumbotron">
+  <h1 class="display-4">Got Milk ?</h1>
+  <hr class="my-4"/>  */}
+  <h1>Welcome {props.currentUser.username}!</h1>
   <p></p>
-  Logged in as:  {props.currentUser.username}
+  <h5>  Below is your milk dashboard where we help keep babies fed</h5>
   <p></p>
-   
-  <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
-  <button className="bton" onClick={() => props.logout()}>Logout</button>
-  <button className="bton" onClick={() => props.profileClick()}>Profile</button>
+  <h6>Happy feeding!</h6>
+
  
-<p></p>
- All Posts:
- <p></p>
+   <button className="bton" onClick={() => props.postClick()}>Make a Post</button>
+  <button className="bton" onClick={() => props.logout()}>Logout</button>
+  <button className="bton" onClick={() => props.profileClick()}>Account</button>
+  <p></p>
+    
+<h2 >
+ {props.profileData.length === 0  ? "Sorry, there is no available formula 😭 ":"All Available 🍼:"}</h2>
+ <p className={props.profileData.length === 0 ? "containers":"posts"}></p>
  <p></p>
  {props.profileData.map((post )=> (
   
@@ -28,10 +35,14 @@ return (
     <p></p>Available? : {post.available === true ? "Yes":"No"}
     <p></p>
     <button onClick={() => props.directionsClick({"origin":props.currentUser.address,"destination":post.address, "post":post.post_id, "post_address":post.address})}>Map It</button>
-    <p></p></div>
-
-
+    <p></p>
+    
+    </div>
+ 
     ))}
+
+
+{/* </div> */}
 </section>
 )
 

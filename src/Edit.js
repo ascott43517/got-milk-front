@@ -1,5 +1,6 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { Autocomplete } from "@react-google-maps/api";
 
 
 
@@ -16,6 +17,7 @@ import { useState } from "react";
  kdefaultFormState.user_id = props.currentUser
  console.log(kdefaultFormState.user_id)
   const [formData, setFormData] = useState(kdefaultFormState);
+  const autocomplete = useRef()
   
     
   const handleChange = (event) => {
@@ -29,7 +31,18 @@ import { useState } from "react";
       }
       setFormData(newFormData)
     }
+    const onLoad= (obj) => {
+      autocomplete.current = obj
+     
+    }
   
+  
+    const handleAddressChange = () => {
+      if (autocomplete.current !== null) {
+       setFormData({...formData, address:autocomplete.current.getPlace().formatted_address})
+      }
+    }
+
     const handleSubmit = (event) => {
       event.preventDefault();
       props.handleEditProfileSubmit(formData);
@@ -54,7 +67,8 @@ import { useState } from "react";
                <p></p>
             
               <label htmlFor="address"> Address</label>
-              <input type="address" id="address"name="address" value={formData.address} onChange={handleChange} placeholder={props.currentUser.address}/>
+              <Autocomplete onPlaceChanged={handleAddressChange} onLoad={onLoad} >
+              <input type="address" id="address"name="address" value={formData.address} onChange={handleChange} placeholder={props.currentUser.address} /></Autocomplete>
               <p></p>
               <input  className = 'create-user-btn' type ="submit" value="Save Changes"/>
 
@@ -62,8 +76,9 @@ import { useState } from "react";
               <p></p>
               
         </form>
-        <button className="bton" onClick={() => props.profileClick()}>Back to Profile</button>
-        <button className="bton" onClick={() => props.logout()}>Logout</button>
+        <section>
+        <button className="bton" onClick={() => props.profileClick()}>Account</button>
+        <button className="bton" onClick={() => props.logout()}>Logout</button></section>
           </div>
           </section>
         )

@@ -1,12 +1,12 @@
-
+import empty.
 
 .btn, .btnn, .bton {
     border: none;
-    background-color: white;
+    background-color: rgb(2, 0, 0);
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(7, 7, 7)
+    color: rgba(23, 94, 226, 0.41)
 
     
 }
@@ -17,9 +17,9 @@
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(79deg,#f6f7f6,#cecec6 48%, #e7ebe5); 
+    background-image: linear-gradient(79deg,#07e6faec,#3ee9e1 48%, #f5f6f803); 
     flex-direction:column;
-    color:white;
+    color:rgb(249, 246, 246);
         
       
 }
@@ -28,36 +28,55 @@
     border-radius: 20%;
     border-width: 0.5rem;
     border-style:ridge;
-    border-color: rgb(1, 1, 1);
+    border-color: rgb(82, 228, 236);
     justify-content: center;
     display:inline-block;
 
 }
 
 .profile-background {
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #040404;
+    
+    font: weight 5px;
+    color: #079aefa7;
 
 }
 
 .green {
-    background-color: rgb(119, 170, 119);
+    background-color: rgb(228, 247, 218);
     padding:1rem;
     border-radius: 20%;
     border-width: 0.5rem;
     border-style:ridge;
-    border-color: rgb(1, 1, 1);
+    border-color: rgba(71, 241, 230, 0.789);
     justify-content: center;
     display:inline-block;
 }
 
 .red {
-    background-color: rgb(155, 72, 72);
+    background-color: rgb(231, 15, 180);
     padding:1rem;
     border-radius: 20%;
     border-width: 0.5rem;
     border-style:ridge;
-    border-color: rgb(1, 1, 1);
+    border-color: rgb(188, 37, 208);
     justify-content: center;
     display:inline-block;
+}
+
+
+.containers {
+    background-image: url('/public/images/bottle_1.gif');
+    background-size:55%;
+  height: 200vh;
+  /* min-zoom:initial; */
+  margin-top: 100px;
+  margin-left: 600px;
+  font-size:25px;
+  background-repeat:no-repeat;
+  
+
+}
+
+.logged-in {
+    justify-content: left;
 }

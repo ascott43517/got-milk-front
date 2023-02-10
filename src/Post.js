@@ -68,9 +68,11 @@ const handleChange = (event) => {
             <p></p>
           
       </form>
-      <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
-      <button className="bton" onClick={() => props.profileClick()}>Account</button>
-  <button className="bton" onClick={() => props.logout()}>Logout</button>
+     <section>
+      
+      <button className="bton" onClick={() => props.logout()}>Logout</button>
+      <button className="bton" onClick={() => props.profileClick()}> Account</button></section>
+      <button className="bton" onClick={() => props.dashboardClick()}>Back to Dashboard</button>
         </div>
 
       

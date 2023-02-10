@@ -86,7 +86,8 @@ const PageContent = (props) => {
     handlePostSubmit={props.handlePostSubmit}
     editUserClick={props.editUserClick}
     profileClick={props.profileClick}
-    logout={props.logout}/>
+    logout={props.logout}
+    dashboardClick={props.dashboardClick}/>
    }
    if (currentPage ==="Edit-User"){
     return <Edit
@@ -99,6 +100,7 @@ const PageContent = (props) => {
     dashboardClick={props.dashboardClick}
     profileClick={props.profileClick}
     directionsClick={props.directionsClick}
+    logout={props.logout}
     />
    }
    if (currentPage ==="Dashboard"){

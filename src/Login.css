@@ -1,13 +1,14 @@
 .auth-form-container{
     text-align: center;
-    display: flex;
+    display:flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background-image: linear-gradient(79deg,#fafbf9,#f9f9f4 48%, #81847f); 
-    flex-direction: column;
-    color:rgb(7, 6, 6);
-    
+    background-image: url('/public/images/bottle_4.gif');
+    flex-direction:column;
+    color:rgb(233, 35, 68);
+    background-repeat:repeat;  
+    background-size: 53%;  
 
     
   } 
@@ -15,10 +16,12 @@
   .login-form, .create-user-form {
     display:flex;
     flex-direction: column;
-    border: 1px solid rgb(9, 9, 9);
-    border-radius: 10px;
+    border: 1px solid rgb(234, 25, 77);
+    border-width: 0.25em;
+    border-radius: 40px;
     padding: 5rem;
-    margin: 0.5rem
+    margin: 0.5rem;
+    /* fill: rgb(248, 242, 247); */
     
 
 
@@ -41,14 +44,14 @@
     padding: 20px;
     border-radius: 10px;
     cursor: pointer;
-    color: rgb(3, 3, 3)
+    color: rgb(229, 11, 48)
     
 
   }
 
   .link-btn {
     background: none;
-    color: rgb(7, 7, 7);
+    color: rgb(230, 19, 19);
     text-decoration: underline;
 
   }

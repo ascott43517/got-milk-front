@@ -7,8 +7,8 @@ import './Directions.css';
 
 
 const containerStyle = {
-  width: '500px',
-  height: '500px',
+  width: 400,
+  height: 400,
   textalign:'center'
 };
 
@@ -21,12 +21,12 @@ return (
      
     <p></p>
 
-    <button className="btn" onClick={() => props.postClick()}>Make a Post</button>
+    <button className="bton" onClick={() => props.postClick()}>Make a Post</button>
     <button className="bton" onClick={() => props.logout()}>Logout</button>
     <button className="bton" onClick={() => props.dashboardClick()}>Dashboard</button>
     <p></p>
 
-    <div >
+    <div className="container">
     
       <GoogleMap
         mapContainerStyle={containerStyle}

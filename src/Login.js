@@ -24,7 +24,8 @@ const Login = (props) => {
 
 return (
 <div className="auth-form-container">
-  <h2>Login</h2>
+  
+  <h3>Login</h3>
 <form className= 'login-form'onSubmit={handleSubmit}>
   <label htmlFor="username"> email </label>
   <input type="username" placeholder="youremail@gmail.com" id="username" value ={formData.username} onChange={handleChange} name="username"/>
@@ -32,7 +33,7 @@ return (
   <label htmlFor="password"> password </label>
   <input type="password" placeholder="********" id="password" value={formData.password} onChange={handleChange} name="password"/>
   <p></p>
-  <button  className = 'create-user-btn' type ="submit" value="Log In" onClick={() => props.handleLoginSubmit(formData.username)}>Log In </button>
+  <button button  class="btn btn-info" className = 'create-user-btn' type ="submit" value="Log In" onClick={() => props.handleLoginSubmit(formData.username)}>Log In </button>
 
 </form>
 <button className="link-btn" onClick={() => props.setCurrentPageName("New-User")}> Dont have an account? Create one Here.</button>
