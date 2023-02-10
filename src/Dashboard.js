@@ -17,9 +17,9 @@ return (
   <h6>Happy feeding!</h6>
 
  
-   <button className="bton" onClick={() => props.postClick()}>Make a Post</button>
-  <button className="bton" onClick={() => props.logout()}>Logout</button>
-  <button className="bton" onClick={() => props.profileClick()}>Account</button>
+   <button type="button"className="btn btn-primary" onClick={() => props.postClick()}>Make a Post</button>
+  <button type="button"className="btn btn-primary" onClick={() => props.logout()}>Logout</button>
+  <button type="button"className="btn btn-primary" onClick={() => props.profileClick()}>Account</button>
   <p></p>
     
 <h2 >
