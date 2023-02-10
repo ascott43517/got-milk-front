@@ -53,12 +53,12 @@ import empty.
 }
 
 .red {
-    background-color: rgb(231, 15, 180);
+    background-color: rgb(245, 108, 129);
     padding:1rem;
     border-radius: 20%;
     border-width: 0.5rem;
     border-style:ridge;
-    border-color: rgb(188, 37, 208);
+    border-color: rgb(223, 44, 4);
     justify-content: center;
     display:inline-block;
 }
