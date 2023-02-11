@@ -76,7 +76,7 @@ padding-top: 2rem;
     font-weight: 600;
     margin-top: 1rem;
     color: #010c13a7;
-} */ */
+} */ 
 
 .red {
     background-color: rgb(242, 113, 137);
@@ -107,7 +107,7 @@ padding-top: 2rem;
     background-image: url('/public/images/bottle_1.gif');
     background: size 75%;
   height: 200vh;
-  /* min-zoom:initial; */
+ 
   margin-top: 100px;
   margin-left: 600px;
   font-size:25px;
@@ -123,8 +123,6 @@ padding-top: 2rem;
 .nav{
     justify-content:center;
     color: #010c13a7;
-     /* display:contents;   */
-    /* background:pink; */
     background-image: url('/public/images/bottle_5.jpeg');
     
   
