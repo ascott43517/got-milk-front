@@ -1,14 +1,16 @@
 .auth-form-container{
     text-align: center;
     display:flex;
-    min-height: 100vh;
+    min-height: 105vh;
+  ;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     background-image: url('/public/images/bottle_4.gif');
+    background-position: -7rem;
     flex-direction:column;
     color:rgb(233, 35, 68);
     background-repeat:repeat;  
-    background-size: 53%;  
+    background-size: 55%;  
 
     
   } 
@@ -19,7 +21,7 @@
     border: 1px solid rgb(234, 25, 77);
     border-width: 0.25em;
     border-radius: 40px;
-    padding: 5rem;
+    padding: 4rem;
     margin: 0.5rem;
     /* fill: rgb(248, 242, 247); */
     

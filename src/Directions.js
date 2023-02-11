@@ -16,7 +16,7 @@ const Directions = (props) => {
  
 return (
     <section className="profile-background">
-     <div className="dashboard">Stay calm! You are only {props.time} from feeding your baby! </div>
+     <h1 className="dashboard">Stay calm! You are only {props.time} from feeding your baby! </h1>
   
      
     <p></p>
@@ -46,13 +46,13 @@ return (
      </div>
 
     <p></p>
-
+     <div className="directions">
        Directions to your forumula:
     <p></p>
 
     {props.address.map((step)=> (<div>
       {step}</div>))}
-
+      </div>
   </section>
 
 

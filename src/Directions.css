@@ -7,10 +7,21 @@
 }
 
 .dashboard {
-    font-weight: 400;
-    font-size: x-large;
+    font-size:60px;
+font-weight: 700;
+padding-bottom: .5em;
 }
 .container {
     align-items: center;
     padding-left: 23.50em;
+    
+   
+}
+
+.directions {
+    font-weight: 800;
+    font-size: 25px;
+    font: bolder;
+    color: #010c13a7;
+    -webkit-text-stroke: .5px rgba(136, 74, 172, 0.742);
 }

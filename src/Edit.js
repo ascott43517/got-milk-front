@@ -77,8 +77,8 @@ import { Autocomplete } from "@react-google-maps/api";
               
         </form>
         <section>
-        <button className="bton" onClick={() => props.profileClick()}>Account</button>
-        <button className="bton" onClick={() => props.logout()}>Logout</button></section>
+        <button className="btn btn-secondary" onClick={() => props.profileClick()}>Account</button>
+        <button className="btn btn-secondary" onClick={() => props.logout()}>Logout</button></section>
           </div>
           </section>
         )

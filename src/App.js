@@ -75,7 +75,8 @@ const getUserAPI = (username) => {
     return (response.data);
   })
   .catch((err) => {
-    return alert(` You entered "${username}" as a username but it doesn't exist.  Please create a new user`)
+    
+    return alert(`"${username}" doesn't exist.  Please create a new user`)
     
   })
 
@@ -189,7 +190,7 @@ console.log(newUserAddress)
      };
 
   const handlePostSubmit = (newPostFormulaName, ) => {
-      
+      console.log(newPostFormulaName)
       createPostAPI(newPostFormulaName)
       .then((newUser) => {
         console.log('create post response')
