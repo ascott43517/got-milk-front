@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useRef } from "react";
 import { Autocomplete } from "@react-google-maps/api";
+import './Post.css';
 
 const kdefaultFormState = {
   address:"",
@@ -71,8 +72,8 @@ const handleChange = (event) => {
      <section>
       
       <button className="btn btn-secondary" onClick={() => props.logout()}>Logout</button>
-      <button className="btn btn-secondary" onClick={() => props.profileClick()}> Account</button></section>
-      <button className="btn btn-secondary" onClick={() => props.dashboardClick()}>Back to Dashboard</button>
+      <button className="btn btn-secondary" onClick={() => props.profileClick()}> Account</button>
+      <button className="btn btn-secondary" onClick={() => props.dashboardClick()}>Dashboard</button></section>
         </div>
 
       
